@@ -13,6 +13,7 @@
 FROM node:alpine as build
 WORKDIR /app
 COPY fe /app
+RUN npm install
 RUN npm run build
 
 FROM nginx
