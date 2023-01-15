@@ -10,12 +10,18 @@
 # implied. See the License for the specific language governing permissions and limitations under the
 # License.
 
-FROM nginx
+FROM node:alpine as build
+WORKDIR /app
+COPY . /app
+RUN npm run build
 
+FROM nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-WORKDIR /usr/share/nginx/html
-COPY site/build .
+# WORKDIR /usr/share/nginx/html
+# COPY site/build .
+
+COPY --from=build /app/build /usr/share/nginx/html
 
 # ARG GITHUB_SHA
 # ARG GITHUB_REF
@@ -25,4 +31,4 @@ COPY site/build .
 # RUN sed -i 's,SHA,'"$GITHUB_SHA"',' index.html
 # RUN sed -i 's,REF,'"$GITHUB_REF"',' index.html
 
-CMD nginx -g 'daemon off;'
+# CMD nginx -g 'daemon off;'
