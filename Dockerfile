@@ -12,7 +12,7 @@
 
 FROM node:alpine as build
 WORKDIR /app
-COPY . /app
+COPY fe /app
 RUN npm run build
 
 FROM nginx
