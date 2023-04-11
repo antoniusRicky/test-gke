@@ -84,6 +84,7 @@ jobs:
     - name: test
       run: |-
         docker image ls
+        env
         
     # Push the Docker image to Google Artifact Registry
     - name: Publish
