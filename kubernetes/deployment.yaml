@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: test
-        image: LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG
+        image: asia-southeast2-docker.pkg.dev/ourstore-skripsi/ourstore-docker/test
         ports:
         - containerPort: 5000
         resources:
