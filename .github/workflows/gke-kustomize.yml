@@ -74,8 +74,7 @@ jobs:
     # pwd
     - name: test
       run: |-
-        npm --version
-        $GITHUB_SHA
+        echo $GITHUB_SHA
 
     # Build the Docker image
     - name: Build
